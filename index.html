@@ -28,7 +28,7 @@
         }
 
         .master-wrapper {
-            max-width: 1250px; /* Widened to force a dominant landscape ratio */
+            max-width: 1250px; /* Forces wide landscape ratio */
             width: 100%;
             margin: 0 auto;
             border: 1px solid var(--border-color);
@@ -39,7 +39,7 @@
         .menu-header {
             border-bottom: 1px solid var(--border-color);
             text-align: center;
-            padding: 20px 20px 15px; /* Reduced vertical padding */
+            padding: 20px 20px 15px;
         }
 
         .menu-spacer {
@@ -51,7 +51,7 @@
 
         .menu-title {
             font-family: var(--title-font);
-            font-size: 3.2rem; /* Shrunk title slightly */
+            font-size: 3.2rem;
             font-weight: 700;
             margin: 0;
             text-transform: uppercase;
@@ -59,7 +59,7 @@
         }
 
         .menu-subtitle {
-            font-size: 0.85rem; /* Shrunk subtitle */
+            font-size: 0.85rem;
             color: var(--sub-text);
             margin-top: 10px;
         }
@@ -92,7 +92,7 @@
 
         .vertical-text {
             font-family: var(--title-font);
-            font-size: 1.5rem; /* Shrunk vertical labels */
+            font-size: 1.5rem;
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -103,18 +103,21 @@
 
         .item-list {
             flex: 1;
-            padding: 20px 30px; /* Reduced vertical padding */
+            padding: 20px 30px;
             box-sizing: border-box;
         }
 
         .menu-item {
-            margin-bottom: 16px; /* Tightened gap between items */
+            margin-bottom: 25px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center; /* Vertically centers the measurement with the description */
             padding-bottom: 2px;
         }
-        .menu-item:last-child { margin-bottom: 0; }
+        
+        .menu-item:last-child { 
+            margin-bottom: 0; 
+        }
 
         .item-name-desc {
             flex: 1;
@@ -125,25 +128,34 @@
             font-family: var(--title-font);
             font-weight: 400; /* Unbolded */
             text-transform: uppercase;
-            font-size: 1.15rem; /* Shrunk drink names */
+            font-size: 1.15rem;
             margin-bottom: 3px;
             color: #222;
             letter-spacing: 1px;
         }
 
         .item-desc {
-            font-size: 0.75rem; /* Shrunk descriptions */
+            font-size: 0.75rem;
             color: var(--sub-text);
             line-height: 1.4;
         }
 
         .item-measure {
-            font-size: 0.85rem; /* Shrunk measurements */
+            text-align: center;
+            line-height: 1.1; /* Keeps the stacked text tightly grouped */
+        }
+        
+        .measure-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #222;
+        }
+        
+        .measure-unit {
+            font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             color: #555;
-            white-space: nowrap;
-            align-self: end;
         }
 
         .right-stack {
@@ -153,31 +165,26 @@
             box-sizing: border-box;
         }
 
-        .highballs-grid-section {
-            display: flex;
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
-        }
-
-        .highballs-content {
-            flex: 1;
-            padding: 20px 30px;
-            box-sizing: border-box;
-        }
-
+        .menu-section.highballs,
         .menu-section.mocktails {
-            flex: 1; /* Forces Mocktails to stretch and fill all remaining vertical space */
+            flex: 1; /* Forces both to divide the vertical space EXACTLY 50/50 */
         }
 
+        .menu-section.highballs {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .menu-section.highballs .item-list,
         .menu-section.mocktails .item-list {
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Vertically centers the content */
+            justify-content: center; /* Vertically centers content within their new 50% heights */
+            height: 100%;
         }
 
         .recommendations-title {
             font-family: var(--title-font);
-            font-size: 1.5rem; /* Shrunk title */
+            font-size: 1.5rem;
             font-weight: 400;
             text-transform: uppercase;
             color: #222;
@@ -203,7 +210,7 @@
             font-weight: 400; /* Unbolded */
             text-transform: uppercase;
             color: #222;
-            font-size: 1.05rem; /* Shrunk spirit names */
+            font-size: 1.05rem;
             letter-spacing: 1px;
         }
 
@@ -215,20 +222,9 @@
         }
 
         .recommendation-list {
-            font-size: 0.75rem; /* Shrunk descriptions */
+            font-size: 0.75rem;
             color: var(--sub-text);
             line-height: 1.4;
-        }
-
-        .footer-note {
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #555;
-            margin-top: 40px; /* Notable gap above footer */
-            padding-top: 10px;
-            width: 100%;
-            text-align: left;
         }
 
         @media (max-width: 768px) {
@@ -241,13 +237,13 @@
 
             .menu-section.cocktails { border-right: none; border-bottom: 1px solid var(--border-color); }
             
-            .menu-section,
-            .highballs-grid-section {
+            .menu-section {
                 flex-direction: column;
             }
 
+            .menu-section.highballs,
             .menu-section.mocktails {
-                flex: none;
+                flex: none; /* Disables flex stretch on mobile */
             }
 
             .vertical-label-container {
@@ -263,8 +259,7 @@
                 letter-spacing: 4px;
             }
 
-            .item-list,
-            .highballs-content {
+            .item-list {
                 padding: 20px 10px;
             }
 
@@ -276,12 +271,7 @@
             
             .menu-section.mocktails .item-name-desc {
                 margin-right: 0;
-                flex: none; /* Prevents text from stretching and left-aligning */
-            }
-
-            .footer-note {
-                margin-top: 15px; /* Removes the extra large space on mobile */
-                text-align: center; /* Centers the footer text to match drinks */
+                flex: none; 
             }
 
             .recommendations-title {
@@ -332,15 +322,15 @@
                             <div class="item-name">Mango Breeze</div>
                             <div class="item-desc">sweet mangos and oranges, with vodka and triple sec</div>
                         </div>
-                        <div class="item-measure">2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
                         <div class="item-name-desc">
                             <div class="item-name">Margarita</div>
-                            <div class="item-desc">sour lime, pineapple, or cranberry with tequila and triple security</div>
+                            <div class="item-desc">sour lime, pineapple, or cranberry with tequila and triple sec</div>
                         </div>
-                        <div class="item-measure">1.5 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -348,7 +338,7 @@
                             <div class="item-name">Sourkey</div>
                             <div class="item-desc">sour lemon and sprite with sour key gummy, vodka and triple sec</div>
                         </div>
-                        <div class="item-measure">1.5 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -356,7 +346,7 @@
                             <div class="item-name">Cosmopolitan</div>
                             <div class="item-desc">simple cranberry drink with vodka and triple sec</div>
                         </div>
-                        <div class="item-measure">1.5 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -364,7 +354,7 @@
                             <div class="item-name">Dirty Shirley Temple</div>
                             <div class="item-desc">sweet oranges and sprite with grenadine and vodka</div>
                         </div>
-                        <div class="item-measure">1-2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">1-2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -372,7 +362,7 @@
                             <div class="item-name">Screwdriver / Tequila Sunrise</div>
                             <div class="item-desc">sweet orange juice and grenadine with vodka or tequila</div>
                         </div>
-                        <div class="item-measure">2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -380,7 +370,7 @@
                             <div class="item-name">ChiChi / Spiced Piña Colada</div>
                             <div class="item-desc">sweet pineapple and coconuts with vodka/spiced rum</div>
                         </div>
-                        <div class="item-measure">2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -388,7 +378,7 @@
                             <div class="item-name">Paloma</div>
                             <div class="item-desc">simple grapefruit drink with tequila</div>
                         </div>
-                        <div class="item-measure">2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -396,7 +386,7 @@
                             <div class="item-name">Spiceberry</div>
                             <div class="item-desc">sweet pineapple and cranberry with spiced rum</div>
                         </div>
-                        <div class="item-measure">1 OUNCE</div>
+                        <div class="item-measure"><span class="measure-val">1</span><br><span class="measure-unit">OUNCE</span></div>
                     </div>
 
                     <div class="menu-item">
@@ -404,7 +394,7 @@
                             <div class="item-name">Peachy Soju</div>
                             <div class="item-desc">sweet peach juice with peach gummy and peach soju</div>
                         </div>
-                        <div class="item-measure">2 OUNCES</div>
+                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
                     </div>
                 </div>
             </div>
@@ -413,13 +403,13 @@
             <div class="right-stack">
                 
                 <!-- Top Right: Highballs Recommendations Section -->
-                <div class="highballs-grid-section">
+                <div class="menu-section highballs">
                     <!-- Vertical Label Container -->
                     <div class="vertical-label-container">
                         <span class="vertical-text">HIGHBALLS</span>
                     </div>
                     
-                    <div class="highballs-content">
+                    <div class="item-list">
                         <h2 class="recommendations-title">RECOMMENDATIONS</h2>
                         
                         <div class="highball-rows">
@@ -480,7 +470,11 @@
                             </div>
                         </div>
 
-                        <div class="footer-note">ANY JUICE/SODA</div>
+                        <div class="menu-item">
+                            <div class="item-name-desc">
+                                <div class="item-name">Any Juice / Soda</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
