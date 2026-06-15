@@ -147,6 +147,7 @@
             justify-content: center;
             text-align: center;
             line-height: 1.1; /* Keeps the stacked text tightly grouped */
+            min-width: 60px; /* Gives a stable box to ensure perfect center alignment */
         }
         
         .measure-val {
@@ -189,7 +190,7 @@
         .recommendations-title {
             font-family: var(--title-font);
             font-size: 1.5rem;
-            font-weight: 400;
+            font-weight: 700;
             text-transform: uppercase;
             color: #222;
             letter-spacing: 2px;
@@ -198,15 +199,23 @@
         }
 
         .highball-rows {
-            display: grid;
-            gap: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly; /* Spreads them out to perfectly fill vertical space */
+            flex: 1; /* Expands flex box */
         }
 
         .highball-row {
             display: grid;
-            grid-template-columns: max-content max-content 1fr;
+            grid-template-columns: 110px 1fr; /* Fixed left width permanently fixes the visual tilt */
             align-items: center;
             gap: 15px;
+        }
+
+        .spirit-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .spirit-name {
@@ -293,6 +302,7 @@
                 border-bottom: 2px dotted #e9e9e9;
             }
             .highball-row:last-child { border-bottom: none; }
+            .spirit-wrapper { justify-content: center; }
             .spirit-name { font-weight: 700; }
             .plus-sign { display: none; }
         }
@@ -327,7 +337,10 @@
                             <div class="item-name">Mango Breeze</div>
                             <div class="item-desc">sweet mangos and oranges, with vodka and triple sec</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -335,7 +348,10 @@
                             <div class="item-name">Margarita</div>
                             <div class="item-desc">sour lime, pineapple, or cranberry with tequila and triple sec</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">1.5</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -343,7 +359,10 @@
                             <div class="item-name">Sourkey</div>
                             <div class="item-desc">sour lemon and sprite with sour key gummy, vodka and triple sec</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">1.5</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -351,7 +370,10 @@
                             <div class="item-name">Cosmopolitan</div>
                             <div class="item-desc">simple cranberry drink with vodka and triple sec</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">1.5</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">1.5</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -359,7 +381,10 @@
                             <div class="item-name">Dirty Shirley Temple</div>
                             <div class="item-desc">sweet oranges and sprite with grenadine and vodka</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">1-2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">1-2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -367,7 +392,10 @@
                             <div class="item-name">Screwdriver / Tequila Sunrise</div>
                             <div class="item-desc">sweet orange juice and grenadine with vodka or tequila</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -375,7 +403,10 @@
                             <div class="item-name">ChiChi / Spiced Piña Colada</div>
                             <div class="item-desc">sweet pineapple and coconuts with vodka/spiced rum</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -383,7 +414,10 @@
                             <div class="item-name">Paloma</div>
                             <div class="item-desc">simple grapefruit drink with tequila</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -391,7 +425,10 @@
                             <div class="item-name">Spiceberry</div>
                             <div class="item-desc">sweet pineapple and cranberry with spiced rum</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">1</span><br><span class="measure-unit">OUNCE</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">1</span>
+                            <span class="measure-unit">OUNCE</span>
+                        </div>
                     </div>
 
                     <div class="menu-item">
@@ -399,7 +436,10 @@
                             <div class="item-name">Peachy Soju</div>
                             <div class="item-desc">sweet peach juice with peach gummy and peach soju</div>
                         </div>
-                        <div class="item-measure"><span class="measure-val">2</span><br><span class="measure-unit">OUNCES</span></div>
+                        <div class="item-measure">
+                            <span class="measure-val">2</span>
+                            <span class="measure-unit">OUNCES</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -419,20 +459,26 @@
                         
                         <div class="highball-rows">
                             <div class="highball-row">
-                                <div class="spirit-name">Vodka</div>
-                                <div class="plus-sign">+</div>
+                                <div class="spirit-wrapper">
+                                    <span class="spirit-name">Vodka</span>
+                                    <span class="plus-sign">+</span>
+                                </div>
                                 <div class="recommendation-list">cranberry, sprite, orange, pineapple, slime (sprite+lime), or any juice</div>
                             </div>
 
                             <div class="highball-row">
-                                <div class="spirit-name">Tequila</div>
-                                <div class="plus-sign">+</div>
+                                <div class="spirit-wrapper">
+                                    <span class="spirit-name">Tequila</span>
+                                    <span class="plus-sign">+</span>
+                                </div>
                                 <div class="recommendation-list">pineapple, sprite, ginger ale, cranberry, orange, slime (sprite+lime)</div>
                             </div>
 
                             <div class="highball-row">
-                                <div class="spirit-name">Spiced Rum</div>
-                                <div class="plus-sign">+</div>
+                                <div class="spirit-wrapper">
+                                    <span class="spirit-name">Spiced Rum</span>
+                                    <span class="plus-sign">+</span>
+                                </div>
                                 <div class="recommendation-list">coke, diet, rootbeer, cranberry, pineapple, ginger ale</div>
                             </div>
                         </div>
